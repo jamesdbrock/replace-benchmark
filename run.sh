@@ -4,7 +4,7 @@
 if [ ! -f bench-test.txt ]; then
     for ((i=1;i<=100000;i++))
     do
-        echo "       foo" >> bench-test.txt
+        echo "       fnord" >> bench-test.txt
     done
 fi
 
@@ -17,9 +17,10 @@ cabal v2-install megaparsec-string megaparsec-bytestring megaparsec-text attopar
 
 OPTIONS="--metric-only"
 
-perf stat ${OPTIONS} sed 's/foo/bar/g' < bench-test.txt 1> /dev/null
+perf stat ${OPTIONS} sed 's/fnord/bar/g' < bench-test.txt 1> /dev/null
 perf stat ${OPTIONS} bin/megaparsec-string < bench-test.txt 1> /dev/null
 perf stat ${OPTIONS} bin/megaparsec-bytestring < bench-test.txt 1> /dev/null
 perf stat ${OPTIONS} bin/attoparsec-bytestring < bench-test.txt 1> /dev/null
 perf stat ${OPTIONS} bin/megaparsec-text < bench-test.txt 1> /dev/null
 perf stat ${OPTIONS} bin/attoparsec-text < bench-test.txt 1> /dev/null
+perf stat ${OPTIONS} python3 replace-python.py < bench-test.txt 1> /dev/null
