@@ -6,5 +6,5 @@ import Data.Text.IO as T
 
 main :: IO ()
 main = T.getContents
-    >>= streamEditT (chunk "fnord") (return . const "bar")
+    >>= streamEditT (chunk "x") (return . const "oo")
     >>= T.putStr

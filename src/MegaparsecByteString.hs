@@ -6,5 +6,5 @@ import Data.ByteString as BS
 
 main :: IO ()
 main = BS.getContents
-        >>= streamEditT (chunk "fnord") (return . const "bar")
+        >>= streamEditT (chunk "x") (return . const "oo")
         >>= BS.putStr
