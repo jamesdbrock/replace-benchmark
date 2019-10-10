@@ -1,0 +1,51 @@
+Thu 10 Oct 2019 10:12:53 PM JST
+PRETTY_NAME="Fedora 30 (Workstation Edition)"
+model name	: Intel(R) Core(TM) i7-5557U CPU @ 3.10GHz
+sed                   dense  69.96,msec,task-clock:u,69956721,100.00,0.995,CPUs utilized
+python3               dense  24.96,msec,task-clock:u,24955339,100.00,0.987,CPUs utilized
+megaparsec-string     dense  458.28,msec,task-clock:u,458284818,100.00,0.999,CPUs utilized
+megaparsec-bytestring dense  610.73,msec,task-clock:u,610731201,100.00,0.998,CPUs utilized
+attoparsec-bytestring dense  544.59,msec,task-clock:u,544590684,100.00,0.999,CPUs utilized
+megaparsec-text       dense  596.33,msec,task-clock:u,596329173,100.00,0.999,CPUs utilized
+attoparsec-text       dense  569.00,msec,task-clock:u,569004737,100.00,0.998,CPUs utilized
+sed                   sparse 3.49,msec,task-clock:u,3489296,100.00,0.885,CPUs utilized
+python3               sparse 24.93,msec,task-clock:u,24929105,100.00,0.986,CPUs utilized
+megaparsec-string     sparse 392.54,msec,task-clock:u,392535018,100.00,0.999,CPUs utilized
+megaparsec-bytestring sparse 460.25,msec,task-clock:u,460248813,100.00,0.997,CPUs utilized
+attoparsec-bytestring sparse 434.08,msec,task-clock:u,434075300,100.00,0.999,CPUs utilized
+megaparsec-text       sparse 362.38,msec,task-clock:u,362382456,100.00,0.998,CPUs utilized
+attoparsec-text       sparse 279.50,msec,task-clock:u,279495957,100.00,0.999,CPUs utilized
+Thu 10 Oct 2019 10:13:01 PM JST
+PRETTY_NAME="Fedora 30 (Workstation Edition)"
+model name	: Intel(R) Core(TM) i7-5557U CPU @ 3.10GHz
+sed                   dense  71.37,msec,task-clock:u,71370035,100.00,0.993,CPUs utilized
+python3               dense  24.13,msec,task-clock:u,24134905,100.00,0.987,CPUs utilized
+megaparsec-string     dense  457.97,msec,task-clock:u,457971757,100.00,0.999,CPUs utilized
+megaparsec-bytestring dense  617.00,msec,task-clock:u,617003761,100.00,0.999,CPUs utilized
+attoparsec-bytestring dense  524.58,msec,task-clock:u,524581430,100.00,0.999,CPUs utilized
+megaparsec-text       dense  620.19,msec,task-clock:u,620193051,100.00,0.999,CPUs utilized
+attoparsec-text       dense  557.38,msec,task-clock:u,557384652,100.00,0.999,CPUs utilized
+sed                   sparse 3.44,msec,task-clock:u,3435328,100.00,0.900,CPUs utilized
+python3               sparse 23.06,msec,task-clock:u,23064183,100.00,0.986,CPUs utilized
+megaparsec-string     sparse 393.34,msec,task-clock:u,393336404,100.00,0.999,CPUs utilized
+megaparsec-bytestring sparse 429.11,msec,task-clock:u,429114834,100.00,0.999,CPUs utilized
+attoparsec-bytestring sparse 420.79,msec,task-clock:u,420786283,100.00,0.999,CPUs utilized
+megaparsec-text       sparse 360.62,msec,task-clock:u,360615601,100.00,0.999,CPUs utilized
+attoparsec-text       sparse 281.87,msec,task-clock:u,281871353,100.00,0.999,CPUs utilized
+Thu 10 Oct 2019 10:13:08 PM JST
+PRETTY_NAME="Fedora 30 (Workstation Edition)"
+model name	: Intel(R) Core(TM) i7-5557U CPU @ 3.10GHz
+sed                   dense  78.76,msec,task-clock:u,78760932,100.00,0.994,CPUs utilized
+python3               dense  25.07,msec,task-clock:u,25069890,100.00,0.963,CPUs utilized
+megaparsec-string     dense  442.65,msec,task-clock:u,442651945,100.00,0.999,CPUs utilized
+megaparsec-bytestring dense  614.59,msec,task-clock:u,614588335,100.00,0.999,CPUs utilized
+attoparsec-bytestring dense  536.57,msec,task-clock:u,536566084,100.00,0.999,CPUs utilized
+megaparsec-text       dense  597.71,msec,task-clock:u,597708451,100.00,0.999,CPUs utilized
+attoparsec-text       dense  576.77,msec,task-clock:u,576769204,100.00,0.999,CPUs utilized
+sed                   sparse 3.33,msec,task-clock:u,3327774,100.00,0.905,CPUs utilized
+python3               sparse 23.92,msec,task-clock:u,23918661,100.00,0.984,CPUs utilized
+megaparsec-string     sparse 380.39,msec,task-clock:u,380385332,100.00,0.997,CPUs utilized
+megaparsec-bytestring sparse 442.18,msec,task-clock:u,442178583,100.00,0.999,CPUs utilized
+attoparsec-bytestring sparse 403.73,msec,task-clock:u,403726104,100.00,0.999,CPUs utilized
+megaparsec-text       sparse 349.30,msec,task-clock:u,349304318,100.00,0.999,CPUs utilized
+attoparsec-text       sparse 293.44,msec,task-clock:u,293439653,100.00,0.999,CPUs utilized
