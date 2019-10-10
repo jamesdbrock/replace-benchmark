@@ -38,7 +38,7 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 
 bin/%:
 	mkdir -p bin
-	cabal v2-install megaparsec-string megaparsec-bytestring megaparsec-text attoparsec-bytestring attoparsec-text --symlink-bindir=./bin
+	cabal v2-install --overwrite-policy=always megaparsec-string megaparsec-bytestring megaparsec-text attoparsec-bytestring attoparsec-text --symlink-bindir=./bin
 
 # Make a 1MB dense test file.
 input/bench-test-dense.txt:
