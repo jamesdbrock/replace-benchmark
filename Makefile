@@ -3,7 +3,7 @@
 OPTIONS=--field-separator , --event=task-clock
 
 .PHONY: run
-run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/attoparsec-bytestring bin/attoparsec-text bin/regex-applicative-string bin/stringsearch-bytestring input/bench-test-dense.txt input/bench-test-sparse.txt
+run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/attoparsec-bytestring bin/attoparsec-text bin/regex-applicative-string bin/stringsearch-bytestring bin/pcre-heavy-text input/bench-test-dense.txt input/bench-test-sparse.txt
 	@date
 	@grep 'PRETTY_NAME' < /etc/os-release
 	@grep 'model name' < /proc/cpuinfo | head -1
@@ -25,6 +25,8 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "stringsearch-bytestring  dense  "
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-dense.txt 2>&1 1>/dev/null
+#	@echo -n "pcre-heavy-text          dense  "
+#	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "sed                      sparse "
 	@perf stat ${OPTIONS} sed 's/x/oo/g' < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "python3                  sparse "
@@ -43,10 +45,12 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "stringsearch-bytestring  sparse "
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-sparse.txt 2>&1 1>/dev/null
+#	@echo -n "pcre-heavy-text          sparse "
+#	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
 
 bin/%:
 	mkdir -p bin
-	cabal v2-install --overwrite-policy=always megaparsec-string megaparsec-bytestring megaparsec-text attoparsec-bytestring attoparsec-text regex-applicative-string stringsearch-bytestring --symlink-bindir=./bin
+	cabal v2-install --overwrite-policy=always megaparsec-string megaparsec-bytestring megaparsec-text attoparsec-bytestring attoparsec-text regex-applicative-string stringsearch-bytestring pcre-heavy-text --symlink-bindir=./bin
 
 # Make a 1MB dense test file.
 input/bench-test-dense.txt:
