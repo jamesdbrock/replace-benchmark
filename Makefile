@@ -45,12 +45,12 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "stringsearch-bytestring  sparse "
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-sparse.txt 2>&1 1>/dev/null
-#	@echo -n "pcre-heavy-text          sparse "
-#	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
+	@echo -n "pcre-heavy-text          sparse "
+	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
 
 bin/%:
 	mkdir -p bin
-	cabal v2-install --overwrite-policy=always megaparsec-string megaparsec-bytestring megaparsec-text attoparsec-bytestring attoparsec-text regex-applicative-string stringsearch-bytestring pcre-heavy-text --symlink-bindir=./bin
+	cabal v2-install --overwrite-policy=always --symlink-bindir=./bin $(@F)
 
 # Make a 1MB dense test file.
 input/bench-test-dense.txt:
