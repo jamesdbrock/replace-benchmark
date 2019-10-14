@@ -25,8 +25,10 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "stringsearch-bytestring  dense  "
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-dense.txt 2>&1 1>/dev/null
-#	@echo -n "pcre-heavy-text          dense  "
-#	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-dense.txt 2>&1 1>/dev/null
+	@echo -n "pcre-heavy-text          dense  "
+	@echo "∞" #	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-dense.txt 2>&1 1>/dev/null
+	@echo -n "perl5                    dense  "
+	@perf stat ${OPTIONS} perl -0777 -pe 's/x/oo/g' input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "sed                      sparse "
 	@perf stat ${OPTIONS} sed 's/x/oo/g' < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "python3                  sparse "
@@ -47,6 +49,8 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "pcre-heavy-text          sparse "
 	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
+	@echo -n "perl5                    sparse "
+	@perf stat ${OPTIONS} perl -0777 -pe 's/x/oo/g' input/bench-test-sparse.txt 2>&1 1>/dev/null
 
 bin/%:
 	mkdir -p bin
