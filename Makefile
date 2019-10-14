@@ -7,6 +7,9 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@date
 	@grep 'PRETTY_NAME' < /etc/os-release
 	@grep 'model name' < /proc/cpuinfo | head -1
+	@sed --version | head -1
+	@python3 --version
+	@perl --version | head -2 | tail -1
 	@echo -n "sed                      dense  "
 	@perf stat ${OPTIONS} sed 's/x/oo/g' < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "python3                  dense  "
