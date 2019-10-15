@@ -31,12 +31,16 @@ We have two benchmark input cases, which we call “dense” and “sparse”.
 The “dense” case is one megabyte of alternating spaces and `x`s
 like
 
-    … x x x x x x x x …
+```
+x x x x x x x x x x x x x x x x x x x x x x x x x x x x
+```
 
 The “sparse” case is one megabyte of spaces with a single `x` in the middle
 like
 
-    …        x        …
+```
+                         x
+```
 
 Each benchmark program reads the input from `stdin`, replaces `x` with `oo`,
 and writes the result to `stdout`. The time elapsed is measured by `perf stat`.
@@ -50,17 +54,17 @@ In milliseconds, smaller is better.
 Here is a comparison of replacement methods which can use an arbitrary function
 to calculate the replacement text.
 
-| Program                          | dense    | sparse   |
-| :---                             |     ---: |     ---: |
-| Python re.sub²                   |  90.63   |  23.14   |
-| Perl s///³                       |  117.30  |  4.98    |
-| replace-megaparsec String        |  467.46  |  381.37  |
-| replace-megaparsec ByteString    |  646.57  |  445.92  |
-| replace-attoparsec ByteString    |  533.05  |  405.42  |
-| replace-megaparsec Text          |  616.94  |  350.64  |
-| replace-attoparsec Text          |  457.78  |  350.63  |
-| [regex-applicative][ra] String   |  1091.00 |  731.24  |
-| [pcre-heavy][ph] Text            |  ∞       |  16.44   |
+| Program                               | dense    | sparse   |
+| :---                                  |     ---: |     ---: |
+| Python `re.sub`²                      |  90.63   |  23.14   |
+| Perl `s///`³                          |  117.30  |  4.98    |
+| [replace-megaparsec][m] `String`      |  467.46  |  381.37  |
+| [replace-megaparsec][m] `ByteString`  |  646.57  |  445.92  |
+| [replace-attoparsec][a] `ByteString`  |  533.05  |  405.42  |
+| [replace-megaparsec][m] `Text`        |  616.94  |  350.64  |
+| [replace-attoparsec][a] `Text`        |  457.78  |  350.63  |
+| [regex-applicative][ra] `String`      |  1091.00 |  731.24  |
+| [pcre-heavy][ph] `Text`               |  ∞       |  16.44   |
 
 ## Constant replacement
 
@@ -70,9 +74,9 @@ replace with a constant string or a templated string.
 | Program                          | dense    | sparse   |
 | :---                             |     ---: |     ---: |
 | sed¹                             |  75.33   |  3.63    |
-| Python re.sub²                   |  55.22   |  22.96   |
-| Perl s///⁴                       |  30.68   |  2.91    |
-| [stringsearch][ss] ByteString    |  116.95  |  2.07    |
+| Python `re.sub`²                 |  55.22   |  22.96   |
+| Perl `s///`⁴                     |  30.68   |  2.91    |
+| [stringsearch][ss] `ByteString`  |  116.95  |  2.07    |
 
 ¹ sed (GNU sed) 4.5
 
@@ -80,6 +84,8 @@ replace with a constant string or a templated string.
 
 ³ This is perl 5, version 28, subversion 2 (v5.28.2) built for x86_64-linux-thread-multi
 
+[m]: https://github.com/jamesdbrock/replace-megaparsec
+[a]: https://github.com/jamesdbrock/replace-attoparsec
 [ra]: http://hackage.haskell.org/package/regex-applicative
 [ss]: http://hackage.haskell.org/package/stringsearch
 [ph]: http://hackage.haskell.org/package/pcre-heavy

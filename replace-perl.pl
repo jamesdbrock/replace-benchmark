@@ -10,7 +10,5 @@ $str =~ s/x/repl($1)/ge;
 print $str;
 
 sub repl {
-    #my ($num) = @_;
-    #return $num + 10;
     return "oo";
 }
