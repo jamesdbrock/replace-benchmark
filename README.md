@@ -8,7 +8,8 @@ and
 # Usage
 
 To run the benchmarks, clone __replace-megaparsec__ and __replace-attoparsec__
-into peer directories and then run the `Makefile`.
+into peer directories and then run the `Makefile`. Requires `sed` and `perl`
+and `python` on the `PATH`.
 
 ```sh
 git clone https://github.com/jamesdbrock/replace-benchmark.git
@@ -18,13 +19,12 @@ cd replace-benchmark
 make
 ```
 
-# Methodology
+# Method
 
 We want to benchmark to find all of the one-character patterns `x` in a
-text stream and replace them with the constant string `oo`, which
-could be expressed in regex as `s/x/oo/g`. The replacement
-string is longer than the pattern strings so that the optimization of
-mutating the input buffer is not available.
+text stream and replace them with the constant string `oo` (`s/x/oo/g`).
+The replacement string is longer than the pattern string so that the
+optimization of mutating the input buffer is not available.
 
 We have two benchmark input cases, which we call “dense” and “sparse”.
 
@@ -52,7 +52,7 @@ In milliseconds, smaller is better.
 ## Function replacement
 
 Here is a comparison of replacement methods which can use an arbitrary function
-to calculate the replacement text.
+to calculate the replacement string.
 
 | Program                               | dense    | sparse   |
 | :---                                  |     ---: |     ---: |
@@ -64,7 +64,7 @@ to calculate the replacement text.
 | [replace-megaparsec][m] `Text`        |  616.94  |  350.64  |
 | [replace-attoparsec][a] `Text`        |  457.78  |  350.63  |
 | [regex-applicative][ra] `String`      |  1091.00 |  731.24  |
-| [pcre-heavy][ph] `Text`               |  ∞       |  16.44   |
+| [pcre-heavy][ph] `Text`               |  ∞⁴      |  16.44   |
 
 ## Constant replacement
 
@@ -83,6 +83,8 @@ replace with a constant string or a templated string.
 ² Python 3.7.4
 
 ³ This is perl 5, version 28, subversion 2 (v5.28.2) built for x86_64-linux-thread-multi
+
+⁴ Does not finish. I think it's O(N²).
 
 [m]: https://github.com/jamesdbrock/replace-megaparsec
 [a]: https://github.com/jamesdbrock/replace-attoparsec
