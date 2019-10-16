@@ -53,29 +53,29 @@ In milliseconds, smaller is better.
 Here is a comparison of replacement methods which can use an arbitrary function
 to calculate the replacement string.
 
-| Program                                           | dense      | sparse     |
-| :---                                              |       ---: |       ---: |
-| Python `re.sub`¹                                  |  90.63ms   |  23.14ms   |
-| Perl `s///ge`²                                    |  117.30ms  |  4.98ms    |
-| [`Replace.Megaparsec.streamEdit`][m] `String`     |  467.46ms  |  381.37ms  |
-| [`Replace.Megaparsec.streamEdit`][m] `ByteString` |  646.57ms  |  445.92ms  |
-| [`Replace.Megaparsec.streamEdit`][m] `Text`       |  616.94ms  |  350.64ms  |
-| [`Replace.Attoparsec.ByteString.streamEdit`][ab]  |  533.05ms  |  405.42ms  |
-| [`Replace.Attoparsec.Text.streamEdit`][at]        |  457.78ms  |  350.63ms  |
-| [`Text.Regex.Applicative.replace`][ra] `String`   |  1091.00ms |  731.24ms  |
-| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         |  ⊥³        |  16.44ms   |
+| Program                                           | dense     | sparse   |
+| :---                                              |      ---: |     ---: |
+| Python `re.sub`¹                                  | 89.23ms   | 23.98ms  |
+| Perl `s///ge`²                                    | 180.65ms  | 5.60ms   |
+| [`Replace.Megaparsec.streamEdit`][m] `String`     | 454.95ms  | 375.04ms |
+| [`Replace.Megaparsec.streamEdit`][m] `ByteString` | 611.98ms  | 433.26ms |
+| [`Replace.Megaparsec.streamEdit`][m] `Text`       | 592.66ms  | 353.32ms |
+| [`Replace.Attoparsec.ByteString.streamEdit`][ab]  | 537.57ms  | 407.33ms |
+| [`Replace.Attoparsec.Text.streamEdit`][at]        | 549.62ms  | 280.96ms |
+| [`Text.Regex.Applicative.replace`][ra] `String`   | 1083.98ms | 646.40ms |
+| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         | ⊥³        | 14.76ms  |
 
 ## Constant replacement
 
 For reference, here is a comparison of replacement methods which can only
 replace with a constant string or a templated string.
 
-| Program                                 | dense     | sparse  |
-| :---                                    |      ---: |    ---: |
-| Python `re.sub`¹                        | 54.22ms   | 22.96ms |
-| Perl `s///g`²                           | 30.68ms   | 2.91ms  |
-| sed⁴                                    | 75.33ms   | 3.63ms  |
-| [`Data.ByteString.Search.replace`][ss]  | 116.95ms  | 2.07ms  |
+| Program                                 | dense    | sparse  |
+| :---                                    |     ---: |    ---: |
+| Python `re.sub`¹                        | 53.49ms  | 24.39ms |
+| Perl `s///g`²                           | 33.06ms  | 4.00ms  |
+| sed⁴                                    | 68.20ms  | 3.53ms  |
+| [`Data.ByteString.Search.replace`][ss]  | 118.21ms | 2.10ms  |
 
 ¹ Python 3.7.4
 
@@ -84,7 +84,6 @@ replace with a constant string or a templated string.
 ³ Does not finish.
 
 ⁴ sed (GNU sed) 4.5
-
 
 [m]: https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit
 [ab]: https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-ByteString.html#v:streamEdit
