@@ -21,10 +21,9 @@ make
 
 # Method
 
-We want to benchmark to find all of the one-character patterns `x` in a
-text stream and replace them with the constant string `oo` (`s/x/oo/g`).
-The replacement string is longer than the pattern string so that the
-optimization of mutating the input buffer is not available.
+The benchmark task is to find all of the one-character patterns `x` in a
+text stream and replace them by a function which returns the constant
+string `oo`. So, like the regex `s/x/oo/g`.
 
 We have two benchmark input cases, which we call “dense” and “sparse”.
 
@@ -54,29 +53,29 @@ In milliseconds, smaller is better.
 Here is a comparison of replacement methods which can use an arbitrary function
 to calculate the replacement string.
 
-| Program                                           | dense    | sparse   |
-| :---                                              |     ---: |     ---: |
-| Python `re.sub`¹                                  |  90.63   |  23.14   |
-| Perl `s///`²                                      |  117.30  |  4.98    |
-| [`Replace.Megaparsec.streamEdit`][m] `String`     |  467.46  |  381.37  |
-| [`Replace.Megaparsec.streamEdit`][m] `ByteString` |  646.57  |  445.92  |
-| [`Replace.Megaparsec.streamEdit`][m] `Text`       |  616.94  |  350.64  |
-| [`Replace.Attoparsec.ByteString.streamEdit`][ab]  |  533.05  |  405.42  |
-| [`Replace.Attoparsec.Text.streamEdit`][at]        |  457.78  |  350.63  |
-| [`Text.Regex.Applicative.replace`][ra] `String`   |  1091.00 |  731.24  |
-| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         |  ⊥³      |  16.44   |
+| Program                                           | dense      | sparse     |
+| :---                                              |       ---: |       ---: |
+| Python `re.sub`¹                                  |  90.63ms   |  23.14ms   |
+| Perl `s///ge`²                                    |  117.30ms  |  4.98ms    |
+| [`Replace.Megaparsec.streamEdit`][m] `String`     |  467.46ms  |  381.37ms  |
+| [`Replace.Megaparsec.streamEdit`][m] `ByteString` |  646.57ms  |  445.92ms  |
+| [`Replace.Megaparsec.streamEdit`][m] `Text`       |  616.94ms  |  350.64ms  |
+| [`Replace.Attoparsec.ByteString.streamEdit`][ab]  |  533.05ms  |  405.42ms  |
+| [`Replace.Attoparsec.Text.streamEdit`][at]        |  457.78ms  |  350.63ms  |
+| [`Text.Regex.Applicative.replace`][ra] `String`   |  1091.00ms |  731.24ms  |
+| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         |  ⊥³        |  16.44ms   |
 
 ## Constant replacement
 
 For reference, here is a comparison of replacement methods which can only
 replace with a constant string or a templated string.
 
-| Program                                 | dense    | sparse   |
-| :---                                    |     ---: |     ---: |
-| Python `re.sub`¹                        |  55.22   |  22.96   |
-| Perl `s///`²                            |  30.68   |  2.91    |
-| sed⁴                                    |  75.33   |  3.63    |
-| [`Data.ByteString.Search.replace`][ss]  |  116.95  |  2.07    |
+| Program                                 | dense     | sparse  |
+| :---                                    |      ---: |    ---: |
+| Python `re.sub`¹                        | 54.22ms   | 22.96ms |
+| Perl `s///g`²                           | 30.68ms   | 2.91ms  |
+| sed⁴                                    | 75.33ms   | 3.63ms  |
+| [`Data.ByteString.Search.replace`][ss]  | 116.95ms  | 2.07ms  |
 
 ¹ Python 3.7.4
 
