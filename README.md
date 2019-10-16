@@ -25,16 +25,16 @@ The benchmark task is to find all of the one-character patterns `x` in a
 text stream and replace them by a function which returns the constant
 string `oo`. So, like the regex `s/x/oo/g`.
 
-We have two benchmark input cases, which we call “dense” and “sparse”.
+We have two benchmark input cases, which we call __dense__ and __sparse__.
 
-The “dense” case is one megabyte of alternating spaces and `x`s
+The __dense__ case is one megabyte of alternating spaces and `x`s
 like
 
 ```
 x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 ```
 
-The “sparse” case is one megabyte of spaces with a single `x` in the middle
+The __sparse__ case is one megabyte of spaces with a single `x` in the middle
 like
 
 ```
