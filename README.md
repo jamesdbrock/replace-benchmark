@@ -54,40 +54,42 @@ In milliseconds, smaller is better.
 Here is a comparison of replacement methods which can use an arbitrary function
 to calculate the replacement string.
 
-| Program                               | dense    | sparse   |
-| :---                                  |     ---: |     ---: |
-| Python `re.sub`²                      |  90.63   |  23.14   |
-| Perl `s///`³                          |  117.30  |  4.98    |
-| [replace-megaparsec][m] `String`      |  467.46  |  381.37  |
-| [replace-megaparsec][m] `ByteString`  |  646.57  |  445.92  |
-| [replace-attoparsec][a] `ByteString`  |  533.05  |  405.42  |
-| [replace-megaparsec][m] `Text`        |  616.94  |  350.64  |
-| [replace-attoparsec][a] `Text`        |  457.78  |  350.63  |
-| [regex-applicative][ra] `String`      |  1091.00 |  731.24  |
-| [pcre-heavy][ph] `Text`               |  ∞⁴      |  16.44   |
+| Program                                           | dense    | sparse   |
+| :---                                              |     ---: |     ---: |
+| Python `re.sub`¹                                  |  90.63   |  23.14   |
+| Perl `s///`²                                      |  117.30  |  4.98    |
+| [`Replace.Megaparsec.streamEdit`][m] `String`     |  467.46  |  381.37  |
+| [`Replace.Megaparsec.streamEdit`][m] `ByteString` |  646.57  |  445.92  |
+| [`Replace.Megaparsec.streamEdit`][m] `Text`       |  616.94  |  350.64  |
+| [`Replace.Attoparsec.ByteString.streamEdit`][ab]  |  533.05  |  405.42  |
+| [`Replace.Attoparsec.Text.streamEdit`][at]        |  457.78  |  350.63  |
+| [`Text.Regex.Applicative.replace`][ra] `String`   |  1091.00 |  731.24  |
+| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         |  ⊥³      |  16.44   |
 
 ## Constant replacement
 
 For reference, here is a comparison of replacement methods which can only
 replace with a constant string or a templated string.
 
-| Program                          | dense    | sparse   |
-| :---                             |     ---: |     ---: |
-| sed¹                             |  75.33   |  3.63    |
-| Python `re.sub`²                 |  55.22   |  22.96   |
-| Perl `s///`⁴                     |  30.68   |  2.91    |
-| [stringsearch][ss] `ByteString`  |  116.95  |  2.07    |
+| Program                                 | dense    | sparse   |
+| :---                                    |     ---: |     ---: |
+| Python `re.sub`¹                        |  55.22   |  22.96   |
+| Perl `s///`²                            |  30.68   |  2.91    |
+| sed⁴                                    |  75.33   |  3.63    |
+| [`Data.ByteString.Search.replace`][ss]  |  116.95  |  2.07    |
 
-¹ sed (GNU sed) 4.5
+¹ Python 3.7.4
 
-² Python 3.7.4
+² This is perl 5, version 28, subversion 2 (v5.28.2) built for x86_64-linux-thread-multi
 
-³ This is perl 5, version 28, subversion 2 (v5.28.2) built for x86_64-linux-thread-multi
+³ Does not finish.
 
-⁴ Does not finish. I think it's O(N²).
+⁴ sed (GNU sed) 4.5
 
-[m]: https://github.com/jamesdbrock/replace-megaparsec
-[a]: https://github.com/jamesdbrock/replace-attoparsec
-[ra]: http://hackage.haskell.org/package/regex-applicative
-[ss]: http://hackage.haskell.org/package/stringsearch
-[ph]: http://hackage.haskell.org/package/pcre-heavy
+
+[m]: https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit
+[ab]: https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-ByteString.html#v:streamEdit
+[at]: https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-Text.html#v:streamEdit
+[ra]: http://hackage.haskell.org/package/regex-applicative/docs/Text-Regex-Applicative.html#v:replace
+[ss]: http://hackage.haskell.org/package/stringsearch/docs/Data-ByteString-Search.html
+[ph]: http://hackage.haskell.org/package/pcre-heavy/docs/Text-Regex-PCRE-Heavy.html
