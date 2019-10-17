@@ -106,3 +106,15 @@ benchmark bench-unit-megaparsec
                      , criterion
   ghc-options:         -O2 -Wall
 
+benchmark bench-unit-attoparsec
+  main-is:             BenchUnitAttoparsec.hs
+  hs-source-dirs:      src
+  type:                exitcode-stdio-1.0
+  default-language:    Haskell2010
+  build-depends:       base >= 4.0 && < 5.0
+                     , attoparsec
+                     , replace-attoparsec
+                     , text
+                     , bytestring
+                     , criterion
+  ghc-options:         -O2 -Wall
