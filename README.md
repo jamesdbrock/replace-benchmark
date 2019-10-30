@@ -21,6 +21,13 @@ make
 
 # Method
 
+These benchmarks are intended to measure the wall-clock speed
+of *everything except the actual pattern-matching*. Speed of the
+pattern-matching the responsibility of the
+[__megaparsec__](http://hackage.haskell.org/package/megaparsec) and
+[__attoparsec__](http://hackage.haskell.org/package/attoparsec)
+libraries.
+
 The benchmark task is to find all of the one-character patterns `x` in a
 text stream and replace them by a function which returns the constant
 string `oo`. So, like the regex `s/x/oo/g`.
