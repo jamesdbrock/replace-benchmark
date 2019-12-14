@@ -3,7 +3,7 @@
 OPTIONS=--field-separator , --event=task-clock
 
 .PHONY: run
-run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/attoparsec-bytestring bin/attoparsec-text bin/regex-applicative-string bin/stringsearch-bytestring bin/pcre-heavy-text input/bench-test-dense.txt input/bench-test-sparse.txt
+run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/attoparsec-bytestring bin/attoparsec-text bin/regex-applicative-string bin/stringsearch-bytestring bin/pcre-heavy-text bin/lens-regex-text bin/lens-regex-bytestring input/bench-test-dense.txt input/bench-test-sparse.txt
 	@date
 	@grep 'PRETTY_NAME' < /etc/os-release
 	@grep 'model name' < /proc/cpuinfo | head -1
@@ -34,6 +34,10 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "pcre-heavy-text          dense  "
 	@echo "∞" #	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-dense.txt 2>&1 1>/dev/null
+	@echo -n "lens-regex-text          dense  "
+	@echo "∞" #@perf stat ${OPTIONS} bin/lens-regex-text < input/bench-test-dense.txt 2>&1 1>/dev/null
+	@echo -n "lens-regex-bytestring    dense  "
+	@echo "∞" #@perf stat ${OPTIONS} bin/lens-regex-bytestring < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "stringsearch-bytestring  dense  "
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "sed                      sparse "
@@ -60,6 +64,10 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "pcre-heavy-text          sparse "
 	@perf stat ${OPTIONS} bin/pcre-heavy-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
+	@echo -n "lens-regex-text          sparse "
+	@perf stat ${OPTIONS} bin/lens-regex-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
+	@echo -n "lens-regex-bytestring    sparse "
+	@perf stat ${OPTIONS} bin/lens-regex-bytestring < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "stringsearch-bytestring  sparse "
 	@perf stat ${OPTIONS} bin/stringsearch-bytestring < input/bench-test-sparse.txt 2>&1 1>/dev/null
 

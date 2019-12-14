@@ -8,14 +8,15 @@ and
 # Usage
 
 To run the benchmarks, clone __replace-megaparsec__ and __replace-attoparsec__
-into peer directories and then run the `Makefile`. Requires `sed` and `perl`
-and `python` on the `PATH`.
+into peer directories (see `cabal.project`) and then run the `Makefile`.
+Requires `sed` and `perl` and `python` on the `PATH`.
 
 ```sh
 git clone https://github.com/jamesdbrock/replace-benchmark.git
 git clone https://github.com/jamesdbrock/replace-megaparsec.git
 git clone https://github.com/jamesdbrock/replace-attoparsec.git
 cd replace-benchmark
+cabal v2-update
 make
 ```
 
@@ -64,14 +65,17 @@ to calculate the replacement string.
 | Program                                           | dense     | sparse   |
 | :---                                              |      ---: |     ---: |
 | Python `re.sub`¹                                  | 89.23ms   | 23.98ms  |
-| Perl `s///ge`²                                    | 180.65ms  | 5.60ms   |
-| [`Replace.Megaparsec.streamEdit`][m] `String`     | 454.95ms  | 375.04ms |
+| Perl `s///ge`²                                    | 180.65ms  | 5.02ms   |
+| [`Replace.Megaparsec.streamEdit`][m] `String`     | 441.94ms  | 375.04ms |
 | [`Replace.Megaparsec.streamEdit`][m] `ByteString` | 529.99ms  | 73.76ms  |
 | [`Replace.Megaparsec.streamEdit`][m] `Text`       | 547.47ms  | 139.21ms |
 | [`Replace.Attoparsec.ByteString.streamEdit`][ab]  | 394.12ms  | 41.13ms  |
 | [`Replace.Attoparsec.Text.streamEdit`][at]        | 515.26ms  | 46.10ms  |
 | [`Text.Regex.Applicative.replace`][ra] `String`   | 1083.98ms | 646.40ms |
-| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         | ⊥³        | 14.76ms  |
+| [`Text.Regex.PCRE.Heavy.gsub`][ph] `Text`         | ⊥³        | 14.29ms  |
+| [`Control.Lens.Regex.ByteString.match`][lb]       | ⊥³        | 4.27ms   |
+| [`Control.Lens.Regex.Text.match`][lt]             | ⊥³        | 14.74ms  |
+
 
 ## Constant replacement
 
@@ -82,8 +86,8 @@ replace with a constant string or a templated string.
 | :---                                    |     ---: |    ---: |
 | Python `re.sub`¹                        | 53.49ms  | 24.39ms |
 | Perl `s///g`²                           | 33.06ms  | 4.00ms  |
-| sed⁴                                    | 68.20ms  | 3.53ms  |
-| [`Data.ByteString.Search.replace`][ss]  | 118.21ms | 2.10ms  |
+| sed⁴                                    | 68.20ms  | 3.48ms  |
+| [`Data.ByteString.Search.replace`][ss]  | 118.21ms | 2.04ms  |
 
 ¹ Python 3.7.4
 
@@ -99,3 +103,5 @@ replace with a constant string or a templated string.
 [ra]: http://hackage.haskell.org/package/regex-applicative/docs/Text-Regex-Applicative.html#v:replace
 [ss]: http://hackage.haskell.org/package/stringsearch/docs/Data-ByteString-Search.html#v:replace
 [ph]: http://hackage.haskell.org/package/pcre-heavy/docs/Text-Regex-PCRE-Heavy.html#v:gsub
+[lb]: https://hackage.haskell.org/package/lens-regex-pcre/docs/Control-Lens-Regex-ByteString.html#v:match
+[lt]: https://hackage.haskell.org/package/lens-regex-pcre/docs/Control-Lens-Regex-Text.html#v:match
