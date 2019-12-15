@@ -65,7 +65,7 @@ to calculate the replacement string.
 | Program                                           | dense     | sparse   |
 | :---                                              |      ---: |     ---: |
 | [Python 3.7.4 `re.sub`][sub] *repl* function      | 89.23ms   | 23.98ms  |
-| [Perl `s///ge`][s]                                | 180.65ms  | 5.02ms   |
+| [Perl 5 `s///ge`][s]                                | 180.65ms  | 5.02ms   |
 | [`Replace.Megaparsec.streamEdit`][m] `String`     | 441.94ms  | 375.04ms |
 | [`Replace.Megaparsec.streamEdit`][m] `ByteString` | 529.99ms  | 73.76ms  |
 | [`Replace.Megaparsec.streamEdit`][m] `Text`       | 547.47ms  | 139.21ms |
