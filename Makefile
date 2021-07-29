@@ -3,7 +3,7 @@
 OPTIONS=--field-separator , --event=task-clock
 
 .PHONY: run
-run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/attoparsec-bytestring bin/attoparsec-text bin/regex-applicative-string bin/stringsearch-bytestring bin/pcre-heavy-text bin/lens-regex-text bin/lens-regex-bytestring input/bench-test-dense.txt input/bench-test-sparse.txt
+run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/attoparsec-bytestring bin/attoparsec-text bin/attoparsec-text-lazy bin/regex-applicative-string bin/stringsearch-bytestring bin/pcre-heavy-text bin/lens-regex-text bin/lens-regex-bytestring input/bench-test-dense.txt input/bench-test-sparse.txt
 	@date
 	@grep 'PRETTY_NAME' < /etc/os-release
 	@grep 'model name' < /proc/cpuinfo | head -1
@@ -30,6 +30,8 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/attoparsec-bytestring < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "attoparsec-text          dense  "
 	@perf stat ${OPTIONS} bin/attoparsec-text < input/bench-test-dense.txt 2>&1 1>/dev/null
+	@echo -n "attoparsec-text-lazy     dense  "
+	@perf stat ${OPTIONS} bin/attoparsec-text-lazy < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "regex-applicative-string dense  "
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-dense.txt 2>&1 1>/dev/null
 	@echo -n "pcre-heavy-text          dense  "
@@ -60,6 +62,8 @@ run: bin/megaparsec-string bin/megaparsec-bytestring bin/megaparsec-text bin/att
 	@perf stat ${OPTIONS} bin/attoparsec-bytestring < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "attoparsec-text          sparse "
 	@perf stat ${OPTIONS} bin/attoparsec-text < input/bench-test-sparse.txt 2>&1 1>/dev/null
+	@echo -n "attoparsec-text-lazy     sparse "
+	@perf stat ${OPTIONS} bin/attoparsec-text-lazy < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "regex-applicative-string sparse "
 	@perf stat ${OPTIONS} bin/regex-applicative-string < input/bench-test-sparse.txt 2>&1 1>/dev/null
 	@echo -n "pcre-heavy-text          sparse "
