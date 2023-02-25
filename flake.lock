@@ -1,0 +1,93 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1676294984,
+        "narHash": "sha256-hdLUa/3RH1VJ+gMUysQE0JGM4F2Q/tIIFbtoxAOurJQ=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "fc282c5478e4141842f9644c239a41cfe9586732",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1677063315,
+        "narHash": "sha256-qiB4ajTeAOVnVSAwCNEEkoybrAlA+cpeiBxLobHndE8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "988cc958c57ce4350ec248d2d53087777f9e1949",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "replace-attoparsec-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1639985298,
+        "narHash": "sha256-zdlzqMiSwvW+evtJh5w2JwoC4u3aQzHBbtJhzYnuNgI=",
+        "owner": "jamesdbrock",
+        "repo": "replace-attoparsec",
+        "rev": "d7f1c5f86670d2239fcf2750adee68fe40d4cc8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jamesdbrock",
+        "repo": "replace-attoparsec",
+        "type": "github"
+      }
+    },
+    "replace-megaparsec-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649940887,
+        "narHash": "sha256-WDBp5Y/gs1H43e59Rwegt/c1pKSVb80LU3Y88JCHlYQ=",
+        "owner": "jamesdbrock",
+        "repo": "replace-megaparsec",
+        "rev": "c4d9dbd710153d0bc58bd9c08e15c5f2389d04bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jamesdbrock",
+        "repo": "replace-megaparsec",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nix-filter": "nix-filter",
+        "nixpkgs": "nixpkgs",
+        "replace-attoparsec-src": "replace-attoparsec-src",
+        "replace-megaparsec-src": "replace-megaparsec-src"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
