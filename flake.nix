@@ -31,6 +31,7 @@
           pkgs = import inputs.nixpkgs { inherit system; overlays = [ overlay ]; };
           # hspkgs = pkgs.haskellPackages;
           hspkgs = pkgs.haskell.packages.ghc944;
+          # hspkgs = pkgs.haskell.packages.ghc8107;
           input-dense = pkgs.stdenv.mkDerivation {
             name = "input-dense";
             src = "";
@@ -131,6 +132,13 @@
                   ${perfstat} ${this}/attoparsec-text < ${input-dense} 2>&1 1>/dev/null | ${mscut}
                   echo -n " | "
                   ${perfstat} ${this}/attoparsec-text < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
+                  echo ' |'
+
+									echo -n '| '
+                  echo -n '[`Replace.Attoparsec.Text.Lazy.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-Text-Lazy.html#v:streamEdit) | '
+                  ${perfstat} ${this}/attoparsec-text-lazy < ${input-dense} 2>&1 1>/dev/null | ${mscut}
+                  echo -n " | "
+                  ${perfstat} ${this}/attoparsec-text-lazy < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
                   echo ' |'
 
 									echo -n '| '
