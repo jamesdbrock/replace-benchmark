@@ -6,10 +6,12 @@
   inputs.nix-filter.url = "github:numtide/nix-filter";
   inputs.replace-megaparsec-src = {
     url = "github:jamesdbrock/replace-megaparsec";
+    # url = "path:/home/jbrock/work/me/replace-megaparsec";
     flake = false;
   };
   inputs.replace-attoparsec-src = {
     url = "github:jamesdbrock/replace-attoparsec";
+    # url = "path:/home/jbrock/work/me/replace-attoparsec";
     flake = false;
   };
 
@@ -61,6 +63,7 @@
               done
               '';
           };
+          scripts = nix-filter {root = ./.; include = [./replace-perl.pl ./replace-python-fn.py ./replace-python.py];};
         in
         {
 
@@ -84,9 +87,9 @@
                   ${python} --version | ${oneline}
                   echo -n ' [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) *repl* function'
                   echo -n " | "
-                  ${perfstat} ${python} replace-python-fn.py < ${input-dense} 2>&1 1>/dev/null | ${mscut}
+                  ${perfstat} ${python} ${scripts}/replace-python-fn.py < ${input-dense} 2>&1 1>/dev/null | ${mscut}
                   echo -n " | "
-                  ${perfstat} ${python} replace-python-fn.py < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
+                  ${perfstat} ${python} ${scripts}/replace-python-fn.py < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
                   echo ' |'
 
 									echo -n '| '
@@ -94,9 +97,9 @@
                   ${perl} --version | ${pkgs.gnugrep}/bin/grep -o "v[0-9]*\.[0-9]*\.[0-9]*" | ${oneline}
                   echo -n ' [`s///ge`](https://perldoc.perl.org/functions/s.html)'
                   echo -n " function | "
-                  ${perfstat} ${perl} replace-perl.pl < ${input-dense} 2>&1 1>/dev/null | ${mscut}
+                  ${perfstat} ${perl} ${scripts}/replace-perl.pl < ${input-dense} 2>&1 1>/dev/null | ${mscut}
                   echo -n " | "
-                  ${perfstat} ${perl} replace-perl.pl < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
+                  ${perfstat} ${perl} ${scripts}/replace-perl.pl < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
                   echo ' |'
 
 									echo -n '| '
@@ -186,9 +189,9 @@
                   ${python} --version | ${oneline}
                   echo -n ' [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) *repl* string'
                   echo -n " | "
-                  ${perfstat} ${python} replace-python.py < ${input-dense} 2>&1 1>/dev/null | ${mscut}
+                  ${perfstat} ${python} ${scripts}/replace-python.py < ${input-dense} 2>&1 1>/dev/null | ${mscut}
                   echo -n " | "
-                  ${perfstat} ${python} replace-python.py < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
+                  ${perfstat} ${python} ${scripts}/replace-python.py < ${input-sparse} 2>&1 1>/dev/null | ${mscut}
                   echo ' |'
 
 									echo -n '| '

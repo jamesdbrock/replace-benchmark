@@ -7,14 +7,10 @@ and
 
 # Usage
 
-The `cabal.project` file is configured to look for the __replace-megaparsec__
-and __replace-attoparsec__ packages in peer directories `../`. This is
-for convenience when tuning those packages.
-
 To run the benchmarks,
 
 ```
-nix run
+nix run github:jamesdbrock/replace-benchmark
 ```
 
 # Method
