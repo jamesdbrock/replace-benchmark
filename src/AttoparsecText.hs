@@ -6,5 +6,5 @@ import Data.Text.IO as T
 
 main :: IO ()
 main = T.getContents
-    >>= streamEditT (string "x") (return . const "oo")
+    >>= pure . streamEdit (string "x") (const "oo")
     >>= T.putStr

@@ -7,5 +7,5 @@ import Data.ByteString as BS
 
 main :: IO ()
 main = BS.getContents
-        >>= streamEditT @() (chunk "x") (return . const "oo")
+        >>= pure . streamEdit @() (chunk "x") (const "oo")
         >>= BS.putStr

@@ -5,5 +5,5 @@ import Replace.Megaparsec
 
 main :: IO ()
 main = getContents
-    >>= streamEditT @() (chunk "x") (return . const "oo")
+    >>= pure . streamEdit @() (chunk "x") (const "oo")
     >>= putStr
