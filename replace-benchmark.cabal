@@ -123,6 +123,14 @@ executable lens-regex-bytestring
                      , lens
   ghc-options:         -O2 -Wall
 
+executable data-text-replace
+  main-is:             DataTextReplace.hs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base >= 4.0 && < 5.0
+                     , text
+  ghc-options:         -O2 -Wall
+
 benchmark bench-unit-megaparsec
   main-is:             BenchUnitMegaparsec.hs
   hs-source-dirs:      src
@@ -148,3 +156,4 @@ benchmark bench-unit-attoparsec
                      , bytestring
                      , criterion
   ghc-options:         -O2 -Wall
+

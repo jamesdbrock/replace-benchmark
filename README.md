@@ -56,20 +56,22 @@ In milliseconds. Smaller is better.
 Here is a comparison of replacement methods which can use an arbitrary function
 to calculate the replacement string.
 
+
 | Program                                           | dense *ms*  | sparse *ms* |
 | :---                                              |      ---: |     ---:  |
-| Python 3.10.9 [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) *repl* function | 557.22 | 35.47 |
-| Perl  v5.36.0 [`s///ge`](https://perldoc.perl.org/functions/s.html) function | 1208.66 | 12.61 |
-| [`Replace.Megaparsec.streamEdit`](https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit) `String` | 2921.25 | 2911.81 |
-| [`Replace.Megaparsec.streamEdit`](https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit) `ByteString` | 3743.25 | 757.21 |
-| [`Replace.Megaparsec.streamEdit`](https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit) `Text` | 3818.47 | 881.69 |
-| [`Replace.Attoparsec.ByteString.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-ByteString.html#v:streamEdit) | 3006.38 | 179.66 |
-| [`Replace.Attoparsec.Text.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-Text.html#v:streamEdit) | 3062.43 | 300.13 |
-| [`Replace.Attoparsec.Text.Lazy.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-Text-Lazy.html#v:streamEdit) | 3102.15 | 241.58 |
-| [`Text.Regex.Applicative.replace`](http://hackage.haskell.org/package/regex-applicative/docs/Text-Regex-Applicative.html#v:replace) `String` | 13875.25 | 4330.52 |
-| [`Text.Regex.PCRE.Heavy.gsub`](http://hackage.haskell.org/package/pcre-heavy/docs/Text-Regex-PCRE-Heavy.html#v:gsub) `Text` | ∞ | 113.27 |
-| [`Control.Lens.Regex.ByteString.match`](https://hackage.haskell.org/package/lens-regex-pcre/docs/Control-Lens-Regex-ByteString.html#v:match) | ∞ | 117.05 |
-| [`Control.Lens.Regex.Text.match`](https://hackage.haskell.org/package/lens-regex-pcre/docs/Control-Lens-Regex-Text.html#v:match) | ∞ | 35.97 |
+| Python 3.10.10 [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) *repl* function | 570.42 | 36.24 |
+| Perl  v5.36.0 [`s///ge`](https://perldoc.perl.org/functions/s.html) function | 1248.59 | 13.33 |
+| [`Replace.Megaparsec.streamEdit`](https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit) `String` | 3099.49 | 3020.84 |
+| [`Replace.Megaparsec.streamEdit`](https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit) `ByteString` | 3930.55 | 774.05 |
+| [`Replace.Megaparsec.streamEdit`](https://hackage.haskell.org/package/replace-megaparsec/docs/Replace-Megaparsec.html#v:streamEdit) `Text` | 4104.92 | 916.76 |
+| [`Replace.Attoparsec.ByteString.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-ByteString.html#v:streamEdit) | 3206.51 | 181.80 |
+| [`Replace.Attoparsec.Text.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-Text.html#v:streamEdit) | 3229.30 | 310.53 |
+| [`Replace.Attoparsec.Text.Lazy.streamEdit`](https://hackage.haskell.org/package/replace-attoparsec/docs/Replace-Attoparsec-Text-Lazy.html#v:streamEdit) | 3252.55 | 251.83 |
+| [`Text.Regex.Applicative.replace`](http://hackage.haskell.org/package/regex-applicative/docs/Text-Regex-Applicative.html#v:replace) `String` | 14366.05 | 4633.66 |
+| [`Text.Regex.PCRE.Heavy.gsub`](http://hackage.haskell.org/package/pcre-heavy/docs/Text-Regex-PCRE-Heavy.html#v:gsub) `Text` | ∞ | 119.02 |
+| [`Control.Lens.Regex.ByteString.match`](https://hackage.haskell.org/package/lens-regex-pcre/docs/Control-Lens-Regex-ByteString.html#v:match) | ∞ | 119.56 |
+| [`Control.Lens.Regex.Text.match`](https://hackage.haskell.org/package/lens-regex-pcre/docs/Control-Lens-Regex-Text.html#v:match) | ∞ | 36.91 |
+
 
 ## Constant replacement
 
@@ -78,8 +80,9 @@ replace with a constant string or a templated string.
 
 | Program                                    | dense  *ms* | sparse *ms* |
 | :---                                       |     ---: |    ---: |
-| GNU sed 4.9 | 424.46 | 20.57 |
-| Python 3.10.9 [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) *repl* string | 261.83 | 35.42 |
-| Perl  v5.36.0 [`s///g`](https://perldoc.perl.org/functions/s.html) | 217.59 | 11.07 |
-| [`Data.ByteString.Search.replace`](http://hackage.haskell.org/package/stringsearch/docs/Data-ByteString-Search.html#v:replace) | 788.17 | 11.00
+| GNU sed 4.9 | 432.55 | 21.18 |
+| Python 3.10.10 [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) *repl* string | 267.28 | 36.37 |
+| Perl  v5.36.0 [`s///g`](https://perldoc.perl.org/functions/s.html) | 220.68 | 11.89 |
+| [`Data.ByteString.Search.replace`](http://hackage.haskell.org/package/stringsearch/docs/Data-ByteString-Search.html#v:replace) | 848.27 | 11.19 |
+| [`Data.Text.replace`](https://hackage.haskell.org/package/text/docs/Data-Text.html#v:replace) | 549.26 | 99.93 |
 
